@@ -1,26 +1,30 @@
-// console.log('Sanity Check: Selection Sort');
+let mixArr = [7, 8, 3, 10, 4, 6, 11, 5];
 
-var unsorted = [5, 6, 1, 8, 2, 4, 9, 3];
+function selectionSort(arr) {
+  // console.log(arr);
 
-function selectionSort(array) {
+  let minArr = 0;
+  let leftArr = 0;
+  let saveMinIndex = 0;
 
-  for (var j = 0; j < array.length-1; j++) {
-    // holds smallest number
-    var smallestNumber = array[j];
-    // holds index of smallest number
-    var smallestNumberIndex = null;
+  for (let j = 0; j < arr.length; j++) {
+    leftArr = arr[j];
+    minArr = leftArr;
+    saveMinIndex = j;
 
-    for (var i = j; i < array.length; i++) {
-      // looks for smallest number in array
-      if (smallestNumber > array[i]) {
-        smallestNumber = array[i];
-        smallestNumberIndex = i;
+    for (let i = j; i < arr.length; i++) {
+      if (minArr >= arr[i + 1]) {
+        minArr = arr[i + 1];
+        saveMinIndex = i + 1;
       }
     }
-    array[smallestNumberIndex] = array[j];
-    array[j] = smallestNumber;
-    console.log(array);
+
+    arr[saveMinIndex] = leftArr;
+    arr[j] = minArr;
+
+    // console.log(arr);
   }
+  return arr;
 }
 
-selectionSort(unsorted);
+console.log(selectionSort(mixArr));
